@@ -241,30 +241,30 @@ export default function Home() {
           <ul className='mx-auto mt-12 max-w-prose sm:text-lg space-y-2 w-fit'>
             <li className='w-fit'>
               <Check className='h-5 w-5 text-green-600 inline mr-1.5' />
-              High-quality silicone material
+              Crafted from premium silicone for enhanced durability
             </li>
             <li className='w-fit'>
               <Check className='h-5 w-5 text-green-600 inline mr-1.5' />
-              Scratch- and fingerprint resistant coating
+              Specially coated to resist scratches and repel fingerprints
             </li>
             <li className='w-fit'>
               <Check className='h-5 w-5 text-green-600 inline mr-1.5' />
-              Wireless charging compatible
+              Seamlessly supports wireless charging for your convenience
             </li>
             <li className='w-fit'>
               <Check className='h-5 w-5 text-green-600 inline mr-1.5' />5 year
-              print warranty
+              Backed by a comprehensive 5-year warranty on the print quality
             </li>
 
             <div className='flex justify-center'>
-              <Link
-                className={buttonVariants({
-                  size: 'lg',
-                  className: 'mx-auto mt-8',
-                })}
-                href='/configure/upload'>
-                Create your case now <ArrowRight className='h-4 w-4 ml-1.5' />
-              </Link>
+               <Link
+                  href='/configure/upload'
+                  className={buttonVariants({
+                    size: 'lg',
+                    className: "group mx-auto mt-8 sm:flex items-center gap-1 rounded-lg bg-green-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-green-400 md:text-base"
+                  })}>
+                  <span>Create your case now </span> <ArrowRight className="'ml-1.5 h-5 w-5 md:w-6 transition-transform duration-500 ease-in-out group-hover:translate-x-2" />
+                </Link>
             </div>
           </ul>
         </MaxWidthWrapper>

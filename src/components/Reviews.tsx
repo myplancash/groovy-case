@@ -15,8 +15,11 @@ const PHONES = [
   '/testimonials/6.jpg',
 ]
 
+//<T> is a generic type parameter, it enforce type safety in  this function
+// we dont konw what kind if array we put in here, but whatever kind  gonna be save in the T
+//splitting the array oin certain number of parts  
 function splitArray<T>(array: Array<T>, numParts: number) {
-  const result: Array<Array<T>> = []
+  const result: Array<Array<T>> = [] //empty array to initialize it
 
   for (let i = 0; i < array.length; i++) {
     const index = i % numParts
@@ -25,7 +28,7 @@ function splitArray<T>(array: Array<T>, numParts: number) {
     }
     result[index].push(array[i])
   }
-
+  console.log(result)
   return result
 }
 
@@ -49,7 +52,9 @@ function ReviewColumn({
   useEffect(() => {
     if (!columnRef.current) return
 
+    //listen   on changes of resizing actions
     const resizeObserver = new window.ResizeObserver(() => {
+      //??  nullesh coalescing operator, if this is undefined or null it will return 0, to make typescript happy
       setColumnHeight(columnRef.current?.offsetHeight ?? 0)
     })
 
@@ -69,7 +74,7 @@ function ReviewColumn({
       {reviews.concat(reviews).map((imgSrc, reviewIndex) => (
         <Review
           key={reviewIndex}
-          className={reviewClassName?.(reviewIndex % reviews.length)}
+          className={reviewClassName?.(reviewIndex % reviews.length)} // only if it pass then we're gonna invoke it
           imgSrc={imgSrc}
         />
       ))}
@@ -91,10 +96,10 @@ function Review({ imgSrc, className, ...props }: ReviewProps) {
     '0.5s',
   ]
 
+  // to choose any random delay from the array
   const animationDelay =
-    POSSIBLE_ANIMATION_DELAYS[
-      Math.floor(Math.random() * POSSIBLE_ANIMATION_DELAYS.length)
-    ]
+   POSSIBLE_ANIMATION_DELAYS[Math.floor(Math.random() * POSSIBLE_ANIMATION_DELAYS.length)]
+
 
   return (
     <div
@@ -103,7 +108,7 @@ function Review({ imgSrc, className, ...props }: ReviewProps) {
         className
       )}
       style={{ animationDelay }}
-      {...props}
+      {...props} // we should place it at the end of the props, then it will override the className
     >
       <Phone imgSrc={imgSrc} />
     </div>
@@ -127,23 +132,26 @@ function ReviewGrid() {
       {isInView ? (
         <>
           <ReviewColumn
-            reviews={[...column1, ...column3, ...column2]}
+            reviews={[...column1, ...column3.flat(), ...column2]}
             reviewClassName={(reviewIndex) =>
               cn({
-                'md:hidden': reviewIndex >= column1.length + column3.length,
+                'md:hidden': reviewIndex >= column1.length + column3[0].length,
                 'lg:hidden': reviewIndex >= column1.length,
               })
             }
             msPerPixel={10}
           />
           <ReviewColumn
-            reviews={column2}
+            reviews={[...column2, ...(Array.isArray(column3[1]) ? column3[1] : [])]}
             className='hidden md:block'
+            reviewClassName={(reviewIndex) =>
+              reviewIndex >= column2.length ? 'lg:hidden' : ''
+            }
             msPerPixel={15}
           />
           <ReviewColumn
-            reviews={column3}
-            className='hidden lg:block'
+            reviews={column3.flat()}
+            className='hidden md:block'
             msPerPixel={10}
           />
         </>
