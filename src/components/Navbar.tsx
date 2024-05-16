@@ -3,13 +3,13 @@ import MaxWidthWrapper from './MaxWidthWrapper'
 import { buttonVariants } from './ui/button'
 import { ArrowRight } from 'lucide-react'
 import { ArrowRightIcon } from '@radix-ui/react-icons'
-// import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 
 const Navbar = async () => {
-  /* const { getUser } = getKindeServerSession()
+  const { getUser } = getKindeServerSession()
   const user = await getUser()
 
-  const isAdmin = user?.email === process.env.ADMIN_EMAIL */
+  const isAdmin = user?.email === process.env.ADMIN_EMAIL
 
   return (
     <nav className='sticky z-[100] h-14 inset-x-0 top-0 w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all'>
@@ -20,18 +20,17 @@ const Navbar = async () => {
           </Link>
 
           <div className='h-full flex items-center space-x-4'>
-            {/* {user ? ( */}
+            {user ? (
               <>
                 <Link
                   href='/api/auth/logout'
                   className={buttonVariants({
-                    
                     size: 'sm',
-                    variant: 'ghost',
+                    variant: 'ghost' ,
                   })}>
                   Sign out
                 </Link>
-                {/* {isAdmin ? ( */}
+                {isAdmin ? ( 
                   <Link
                     href='/dashboard'
                     className={buttonVariants({
@@ -40,7 +39,7 @@ const Navbar = async () => {
                     })}>
                     Dashboard ✨
                   </Link>
-                {/* ) : null} */}
+                ) : null} 
                 <Link
                   href='/configure/upload'
                   className={buttonVariants({
@@ -48,10 +47,9 @@ const Navbar = async () => {
                     className: "group hidden sm:flex items-center gap-1 rounded-lg bg-green-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-green-400 md:text-base"
                   })}>
                   <span>Create case</span> <ArrowRightIcon className="'ml-1.5 h-5 w-5 md:w-6 transition-transform duration-500 ease-in-out group-hover:translate-x-2" />
-                  
                 </Link>
               </>
-            {/* ) : ( */}
+             ) : (
               <>
                 <Link
                   href='/api/auth/register'
@@ -83,7 +81,7 @@ const Navbar = async () => {
                   
                 </Link> 
               </>
-            {/* )} */}
+            )}
           </div>
         </div>
       </MaxWidthWrapper>
