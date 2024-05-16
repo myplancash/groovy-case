@@ -16,7 +16,7 @@ export default function Home() {
               <div className='absolute w-28 left-0 -top-20 hidden lg:block'>
                 {/* i forgot this div right here in the video, it's purely visual gradient and looks nice */}
                 <div className='absolute inset-x-0 bottom-0 bg-gradient-to-t via-slate-50/50 from-slate-50 h-28' />
-                <img src='/snake-1.png' className='w-full' alt='Decorative snake image' />
+                <img src='/groovy-1.png' className='w-full' alt='Decorative groovy image' />
               </div>
               <h1 className='relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl'>
                 Your Image on a{' '}
@@ -118,7 +118,7 @@ export default function Home() {
               </span>{' '}
               say
             </h2>
-            <img src='/snake-2.png' className='w-24 order-0 lg:order-2' alt='Decorative snake image' />
+            <img src='/groovy-2.png' className='w-24 order-0 lg:order-2' alt='Decorative groovy image' />
           </div>
 
           <div className='mx-auto grid max-w-2xl grid-cols-1 px-4 lg:mx-0 lg:max-w-none lg:grid-cols-2 gap-y-16'>
@@ -132,13 +132,18 @@ export default function Home() {
               </div>
               <div className='text-lg leading-8'>
                 <p>
-                  &quot;The case feels durable and I even got a compliment on the
-                  design. Had the case for two and a half months now and{' '}
+                  &quot;I&apos;ve been using this case for about two and a half months now, 
+                  and it&apos;s holding up really well. It feels sturdy and durable, 
+                  not like some of the flimsy ones I&apos;ve had before. 
+                  The design is a real eye-catcher too {' '}
                   <span className='p-0.5 bg-slate-800 text-white'>
-                    the image is super clear
+                  I even got a compliment on it the other day! 
                   </span>
-                  , on the case I had before, the image started fading into
-                  yellow-ish color after a couple weeks. Love it.&quot;
+                  I have a bad habit of keeping my phone and keys in the same pocket, 
+                  which has led to some pretty gnarly scratches on all my previous phone cases. 
+                  But this one has been a game changer. Ive been using it for about six months now, 
+                  and aside from a barely noticeable scratch on one corner, it still looks brand new. 
+                  It&apos;s really impressive and I totally dig it.&quot;
                 </p>
               </div>
               <div className='flex gap-4 mt-2'>
